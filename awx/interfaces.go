@@ -9,6 +9,7 @@ import (
 type AwxConnection interface {
 	authenticatedGet(path string, query url.Values, output interface{}) error
 	authenticatedPost(path string, query url.Values, input interface{}, output interface{}) error
+	Jobs() IdGetter
 	Client() *http.Client
 	Close()
 }
