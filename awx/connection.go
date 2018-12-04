@@ -262,7 +262,7 @@ func (b *ConnectionBuilder) Build() (c *Connection, err error) {
 
 // Jobs returns a reference to the resource that manages the collection of jobs.
 //
-func (c *Connection) Jobs() *JobsResource {
+func (c *Connection) Jobs() IdGetter {
 	return NewJobsResource(c, "jobs")
 }
 
@@ -280,6 +280,10 @@ func (c *Connection) Projects() *ProjectsResource {
 
 func (c *Connection) Close() {
 	c.token = ""
+}
+
+func (c *Connection) Client() *http.Client {
+	return c.client
 }
 
 // ensureToken makes sure that there is a token available. If there isn't, then it will request a

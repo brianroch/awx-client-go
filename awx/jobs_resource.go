@@ -27,20 +27,20 @@ type JobsResource struct {
 	Resource
 }
 
-func NewJobsResource(connection *Connection, path string) *JobsResource {
+func NewJobsResource(connection AwxConnection, path string) IdGetter {
 	resource := new(JobsResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *JobsResource) Get() *JobsGetRequest {
+func (r *JobsResource) Get() Sender {
 	request := new(JobsGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
-func (r *JobsResource) Id(id int) *JobResource {
+func (r *JobsResource) Id(id int) Getter {
 	return NewJobResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
@@ -48,43 +48,16 @@ type JobsGetRequest struct {
 	Request
 }
 
-func (r *JobsGetRequest) Filter(name string, value interface{}) *JobsGetRequest {
+func (r *JobsGetRequest) Filter(name string, value interface{}) Sender {
 	r.addFilter(name, value)
 	return r
 }
 
-func (r *JobsGetRequest) Send() (response *JobsGetResponse, err error) {
+func (r *JobsGetRequest) Send() (response interface{}, err error) {
 	response = new(JobsGetResponse)
 	err = r.get(response)
 	if err != nil {
 		return
 	}
-	//response = new(JobsGetResponse)
-	//response.count = output.Count
-	//response.previous = output.Previous
-	//response.next = output.Next
-	//response.results = make([]*Job, len(output.Results))
-	//for i := 0; i < len(output.Results); i++ {
-	//	response.results[i] = new(Job)
-	//	response.results[i].id = output.Results[i].Id
-	//	response.results[i].status = (JobStatus)(output.Results[i].Status)
-	//	response.results[i].name = output.Results[i].Name
-	//	response.results[i].description = output.Results[i].Description
-	//	response.results[i].failed = output.Results[i].Failed
-	//	response.results[i].started = output.Results[i].Started
-	//	response.results[i].finished = output.Results[i].Finished
-	//	response.results[i].elapsed = output.Results[i].Elapsed
-	//	response.results[i].job_template = output.Results[i].Job_template
-	//}
 	return
 }
-
-//type JobsGetResponse struct {
-//	ListGetResponse
-//
-//	results []*Job
-//}
-
-//func (r *JobsGetResponse) Results() []*Job {
-//	return r.results
-//}

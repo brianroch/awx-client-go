@@ -23,14 +23,14 @@ type JobResource struct {
 	Resource
 }
 
-func NewJobResource(connection *Connection, path string) *JobResource {
+func NewJobResource(connection AwxConnection, path string) Getter {
 	resource := new(JobResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *JobResource) Get() *JobGetRequest {
+func (r *JobResource) Get() Sender {
 	request := new(JobGetRequest)
 	request.resource = &r.Resource
 	return request
@@ -40,25 +40,11 @@ type JobGetRequest struct {
 	Request
 }
 
-func (r *JobGetRequest) Send() (response *JobGetResponse, err error) {
+func (r *JobGetRequest) Send() (response interface{}, err error) {
 	response = new(JobGetResponse)
 	err = r.get(response)
 	if err != nil {
 		return nil, err
 	}
-	//response = new(JobGetResponse)
-	//if output != nil {
-	//	response.job = new(Job)
-	//	response.job.id = output.Id
-	//	response.job.status = (JobStatus)(output.Status)
-	//}
 	return
 }
-
-//type JobGetResponse struct {
-//	job *Job
-//}
-
-//func (r *JobGetResponse) Job() *Job {
-//	return r.job
-//}
