@@ -18,7 +18,7 @@ limitations under the License.
 
 package awx
 
-type WorkFlowJob struct {
+type WorkflowJob struct {
 	Id          int     `json:"id,omitempty"`
 	Status      string  `json:"status,omitempty"`
 	Name        string  `json:"name,omitempty"`
@@ -29,6 +29,6 @@ type WorkFlowJob struct {
 	Description string  `json:"description,omitempty"`
 }
 
-type WorkFlowJobGetResponse struct {
+type WorkflowJobGetResponse struct {
 	Job
 }

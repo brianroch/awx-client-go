@@ -16,29 +16,29 @@ limitations under the License.
 
 package awx
 
-type WorkFlowJobResource struct {
+type WorkflowJobResource struct {
 	Resource
 }
 
-func NewWorkFlowJobResource(connection AwxConnection, path string) Getter {
-	resource := new(WorkFlowJobResource)
+func NewWorkflowJobResource(connection AwxConnection, path string) Getter {
+	resource := new(WorkflowJobResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *WorkFlowJobResource) Get() Sender {
+func (r *WorkflowJobResource) Get() Sender {
 	request := new(JobGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
-type WorkFlowJobGetRequest struct {
+type WorkflowJobGetRequest struct {
 	Request
 }
 
-func (r *WorkFlowJobGetRequest) Send() (response interface{}, err error) {
-	response = new(WorkFlowJobGetResponse)
+func (r *WorkflowJobGetRequest) Send() (response interface{}, err error) {
+	response = new(WorkflowJobGetResponse)
 	err = r.get(response)
 	if err != nil {
 		return nil, err

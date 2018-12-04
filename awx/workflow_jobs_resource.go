@@ -20,38 +20,38 @@ import (
 	"fmt"
 )
 
-type WorkFlowJobsResource struct {
+type WorkflowJobsResource struct {
 	Resource
 }
 
-func NewWorkFlowJobsResource(connection AwxConnection, path string) IdGetter {
-	resource := new(WorkFlowJobsResource)
+func NewWorkflowJobsResource(connection AwxConnection, path string) IdGetter {
+	resource := new(WorkflowJobsResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *WorkFlowJobsResource) Get() Sender {
-	request := new(WorkFlowJobsGetRequest)
+func (r *WorkflowJobsResource) Get() Sender {
+	request := new(WorkflowJobsGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
-func (r *WorkFlowJobsResource) Id(id int) Getter {
-	return NewWorkFlowJobResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
+func (r *WorkflowJobsResource) Id(id int) Getter {
+	return NewWorkflowJobResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
-type WorkFlowJobsGetRequest struct {
+type WorkflowJobsGetRequest struct {
 	Request
 }
 
-func (r *WorkFlowJobsGetRequest) Filter(name string, value interface{}) Sender {
+func (r *WorkflowJobsGetRequest) Filter(name string, value interface{}) Sender {
 	r.addFilter(name, value)
 	return r
 }
 
-func (r *WorkFlowJobsGetRequest) Send() (response interface{}, err error) {
-	response = new(WorkFlowJobsGetResponse)
+func (r *WorkflowJobsGetRequest) Send() (response interface{}, err error) {
+	response = new(WorkflowJobsGetResponse)
 	err = r.get(response)
 	if err != nil {
 		return

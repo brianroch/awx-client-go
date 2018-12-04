@@ -16,7 +16,7 @@ limitations under the License.
 
 package awx
 
-type WorkFlowJobsGetResponse struct {
+type WorkflowJobsGetResponse struct {
 	ListGetResponse
 
 	Results []*Job `json:"results,omitempty"`
