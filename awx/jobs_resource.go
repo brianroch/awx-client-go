@@ -21,8 +21,6 @@ package awx
 
 import (
 	"fmt"
-
-	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
 type JobsResource struct {
@@ -56,30 +54,37 @@ func (r *JobsGetRequest) Filter(name string, value interface{}) *JobsGetRequest 
 }
 
 func (r *JobsGetRequest) Send() (response *JobsGetResponse, err error) {
-	output := new(data.JobsGetResponse)
-	err = r.get(output)
+	response = new(JobsGetResponse)
+	err = r.get(response)
 	if err != nil {
 		return
 	}
-	response = new(JobsGetResponse)
-	response.count = output.Count
-	response.previous = output.Previous
-	response.next = output.Next
-	response.results = make([]*Job, len(output.Results))
-	for i, result := range response.results {
-		result = new(Job)
-		result.id = output.Results[i].Id
-		result.status = (JobStatus)(output.Results[i].Status)
-	}
+	//response = new(JobsGetResponse)
+	//response.count = output.Count
+	//response.previous = output.Previous
+	//response.next = output.Next
+	//response.results = make([]*Job, len(output.Results))
+	//for i := 0; i < len(output.Results); i++ {
+	//	response.results[i] = new(Job)
+	//	response.results[i].id = output.Results[i].Id
+	//	response.results[i].status = (JobStatus)(output.Results[i].Status)
+	//	response.results[i].name = output.Results[i].Name
+	//	response.results[i].description = output.Results[i].Description
+	//	response.results[i].failed = output.Results[i].Failed
+	//	response.results[i].started = output.Results[i].Started
+	//	response.results[i].finished = output.Results[i].Finished
+	//	response.results[i].elapsed = output.Results[i].Elapsed
+	//	response.results[i].job_template = output.Results[i].Job_template
+	//}
 	return
 }
 
-type JobsGetResponse struct {
-	ListGetResponse
+//type JobsGetResponse struct {
+//	ListGetResponse
+//
+//	results []*Job
+//}
 
-	results []*Job
-}
-
-func (r *JobsGetResponse) Results() []*Job {
-	return r.results
-}
+//func (r *JobsGetResponse) Results() []*Job {
+//	return r.results
+//}

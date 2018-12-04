@@ -14,22 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// This file contains the data structures used for sending and receiving jobs.
+// This file contains the data structures used to receive lists of job templates.
 
 package awx
 
-type Job struct {
-	Id          int     `json:"id,omitempty"`
-	Status      string  `json:"status,omitempty"`
-	Name        string  `json:"name,omitempty"`
-	Elapsed     float32 `json:"elapsed,omitempty"`
-	Finished    string  `json:"finished,omitempty"`
-	Started     string  `json:"started,omitempty"`
-	Failed      bool    `json:"failed,omitempty"`
-	Description string  `json:"description,omitempty"`
-	JobTemplate int     `json:"job_template,omitempty"`
-}
+type JobsGetResponse struct {
+	ListGetResponse
 
-type JobGetResponse struct {
-	Job
+	Results []*Job `json:"results,omitempty"`
 }

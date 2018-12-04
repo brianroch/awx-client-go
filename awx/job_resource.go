@@ -19,10 +19,6 @@ limitations under the License.
 
 package awx
 
-import (
-	"github.com/moolitayer/awx-client-go/awx/internal/data"
-)
-
 type JobResource struct {
 	Resource
 }
@@ -45,24 +41,24 @@ type JobGetRequest struct {
 }
 
 func (r *JobGetRequest) Send() (response *JobGetResponse, err error) {
-	output := new(data.JobGetResponse)
-	err = r.get(output)
+	response = new(JobGetResponse)
+	err = r.get(response)
 	if err != nil {
 		return nil, err
 	}
-	response = new(JobGetResponse)
-	if output != nil {
-		response.job = new(Job)
-		response.job.id = output.Id
-		response.job.status = (JobStatus)(output.Status)
-	}
+	//response = new(JobGetResponse)
+	//if output != nil {
+	//	response.job = new(Job)
+	//	response.job.id = output.Id
+	//	response.job.status = (JobStatus)(output.Status)
+	//}
 	return
 }
 
-type JobGetResponse struct {
-	job *Job
-}
+//type JobGetResponse struct {
+//	job *Job
+//}
 
-func (r *JobGetResponse) Job() *Job {
-	return r.job
-}
+//func (r *JobGetResponse) Job() *Job {
+//	return r.job
+//}
