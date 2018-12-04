@@ -30,5 +30,5 @@ type WorkflowJob struct {
 }
 
 type WorkflowJobGetResponse struct {
-	Job
+	WorkflowJob
 }

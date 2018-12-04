@@ -28,7 +28,7 @@ func NewWorkflowJobResource(connection AwxConnection, path string) Getter {
 }
 
 func (r *WorkflowJobResource) Get() Sender {
-	request := new(JobGetRequest)
+	request := new(WorkflowJobGetRequest)
 	request.resource = &r.Resource
 	return request
 }
