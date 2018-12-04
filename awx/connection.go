@@ -266,6 +266,12 @@ func (c *Connection) Jobs() IdGetter {
 	return NewJobsResource(c, "jobs")
 }
 
+// Jobs returns a reference to the resource that manages the collection of workflow jobs.
+//
+func (c *Connection) WorkFlowJobs() IdGetter {
+	return NewWorkFlowJobsResource(c, "workflow_jobs")
+}
+
 // JobTemplates returns a reference to the resource that manages the collection of job templates.
 //
 func (c *Connection) JobTemplates() *JobTemplatesResource {
