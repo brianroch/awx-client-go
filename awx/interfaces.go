@@ -19,6 +19,7 @@ type AwxConnection interface {
 
 type Sender interface {
 	Send() (interface{}, error)
+	Filter(name string, value interface{}) Sender
 }
 
 // Resource interfaces

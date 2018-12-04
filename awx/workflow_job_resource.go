@@ -45,3 +45,8 @@ func (r *WorkflowJobGetRequest) Send() (response interface{}, err error) {
 	}
 	return
 }
+
+func (r *WorkflowJobGetRequest) Filter(name string, value interface{}) Sender {
+	r.addFilter(name, value)
+	return r
+}

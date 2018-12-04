@@ -48,3 +48,8 @@ func (r *JobGetRequest) Send() (response interface{}, err error) {
 	}
 	return
 }
+
+func (r *JobGetRequest) Filter(name string, value interface{}) Sender {
+	r.addFilter(name, value)
+	return r
+}
