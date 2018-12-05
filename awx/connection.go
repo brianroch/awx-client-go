@@ -394,7 +394,7 @@ func (c *Connection) makeURL(path, prefix string, query url.Values) string {
 	return buffer.String()
 }
 
-func (c *Connection) authenticatedGet(path string, query url.Values, output interface{}) error {
+func (c *Connection) AuthenticatedGet(path string, query url.Values, output interface{}) error {
 	err := c.ensureToken()
 	if err != nil {
 		return err
@@ -496,7 +496,7 @@ func (c *Connection) rawGet(path string, query url.Values) (output []byte, err e
 	return
 }
 
-func (c *Connection) authenticatedPost(path string, query url.Values, input interface{}, output interface{}) error {
+func (c *Connection) AuthenticatedPost(path string, query url.Values, input interface{}, output interface{}) error {
 	err := c.ensureToken()
 	if err != nil {
 		return err

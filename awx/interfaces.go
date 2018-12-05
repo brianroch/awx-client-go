@@ -7,8 +7,8 @@ type AwxConnection interface {
 	Jobs() IdGetter
 	WorkflowJobs() IdGetter
 	Close()
-	authenticatedGet(string, url.Values, interface{}) error
-	authenticatedPost(string, url.Values, interface{}, interface{}) error
+	AuthenticatedGet(string, url.Values, interface{}) error
+	AuthenticatedPost(string, url.Values, interface{}, interface{}) error
 }
 
 // Request interfaces
