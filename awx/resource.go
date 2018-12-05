@@ -23,7 +23,7 @@ import (
 )
 
 type Resource struct {
-	connection AwxConnection
+	connection *Connection
 	path       string
 }
 

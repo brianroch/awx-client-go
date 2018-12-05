@@ -27,7 +27,7 @@ type JobTemplateResource struct {
 	Resource
 }
 
-func NewJobTemplateResource(connection AwxConnection, path string) *JobTemplateResource {
+func NewJobTemplateResource(connection *Connection, path string) *JobTemplateResource {
 	resource := new(JobTemplateResource)
 	resource.connection = connection
 	resource.path = path

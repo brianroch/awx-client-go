@@ -20,7 +20,7 @@ type WorkflowJobResource struct {
 	Resource
 }
 
-func NewWorkflowJobResource(connection AwxConnection, path string) Getter {
+func NewWorkflowJobResource(connection *Connection, path string) Getter {
 	resource := new(WorkflowJobResource)
 	resource.connection = connection
 	resource.path = path
