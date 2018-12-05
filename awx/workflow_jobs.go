@@ -19,5 +19,5 @@ package awx
 type WorkflowJobsGetResponse struct {
 	ListGetResponse
 
-	Results []*Job `json:"results,omitempty"`
+	Results []*WorkflowJob `json:"results,omitempty"`
 }
