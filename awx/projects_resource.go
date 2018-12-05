@@ -62,7 +62,7 @@ func (r *ProjectsGetRequest) Send() (response *ProjectsGetResponse, err error) {
 		return
 	}
 	response = new(ProjectsGetResponse)
-	response.count = output.Count
+	response.Count = output.Count
 	response.previous = output.Previous
 	response.next = output.Next
 	response.results = make([]*Project, len(output.Results))

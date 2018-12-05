@@ -62,7 +62,7 @@ func (r *JobTemplatesGetRequest) Send() (response *JobTemplatesGetResponse, err 
 		return
 	}
 	response = new(JobTemplatesGetResponse)
-	response.count = output.Count
+	response.Count = output.Count
 	response.previous = output.Previous
 	response.next = output.Next
 	response.results = make([]*JobTemplate, len(output.Results))

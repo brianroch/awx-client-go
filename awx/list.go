@@ -19,11 +19,7 @@ limitations under the License.
 package awx
 
 type ListGetResponse struct {
-	count    int
+	Count    int `json:"count,omitempty"`
 	next     string
 	previous string
-}
-
-func (r *ListGetResponse) Count() int {
-	return r.count
 }
