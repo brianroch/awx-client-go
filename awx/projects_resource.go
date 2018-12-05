@@ -29,7 +29,7 @@ type ProjectsResource struct {
 	Resource
 }
 
-func NewProjectsResource(connection *Connection, path string) *ProjectsResource {
+func NewProjectsResource(connection AwxConnection, path string) *ProjectsResource {
 	resource := new(ProjectsResource)
 	resource.connection = connection
 	resource.path = path

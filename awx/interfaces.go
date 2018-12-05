@@ -1,10 +1,14 @@
 package awx
 
+import "net/url"
+
 // Connection interface
 type AwxConnection interface {
 	Jobs() IdGetter
 	WorkflowJobs() IdGetter
 	Close()
+	authenticatedGet(string, url.Values, interface{}) error
+	authenticatedPost(string, url.Values, interface{}, interface{}) error
 }
 
 // Request interfaces
